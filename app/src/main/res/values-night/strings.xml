@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="TextView_conversion">Select conversion</string>
+    <string name="textView_input">Input value</string>
+    <string name="button_convert">Convert</string>
+</resources>
