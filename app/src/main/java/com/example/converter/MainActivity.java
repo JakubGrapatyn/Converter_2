@@ -2,16 +2,26 @@ package com.example.converter;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +37,34 @@ public class MainActivity extends AppCompatActivity {
         conversion = findViewById(R.id.spinner_conversion);
         number = findViewById(R.id.editText_input);
         result = findViewById(R.id.textView_result);
+        number.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence.length()!= 0){
+                    calculate(charSequence.toString());
+                }else {
+                    result.setText("");
+                }
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        if (message())
+        {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else {
+         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        };
     }
     @Override
     protected void onSaveInstanceState(Bundle outState){
@@ -36,11 +73,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public  boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.action_settings:
+                Intent in= new Intent(this, SettingsActivity.class);
+                startActivity(in);
+                return true;
+            case R.id.action_info:
+                Intent i=new Intent(this,InfoActivity.class);
+                startActivity(i);
+                return true;
+            case R.id.action_exit:
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    @Override
     protected void onRestoreInstanceState(Bundle saveInstanceState){
         super.onRestoreInstanceState((saveInstanceState));
         result.setText(saveInstanceState.getString("score",""));
     }
-    public void onClickConvertButton(View view) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = inflater = getMenuInflater();
+        inflater.inflate(R.menu.converter_menu, menu);
+        return true;
+    }
+
+    public void calculate(String inData) {
         int method;
         int inBase;
         int outBase;
@@ -74,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 outBase = 2;
                 break;
         }
-        outcome= convert(number.getText().toString(),inBase,outBase);
+        outcome= convert(inData,inBase,outBase);
         if (TextUtils.isEmpty(outcome)){
             statement();
         }
@@ -99,5 +161,10 @@ public class MainActivity extends AppCompatActivity {
         v.vibrate(500);
         AlertDialog ad =adb.create();
         ad.show();
+    }
+    private boolean message(){
+        Boolean switchPref = getSharedPreferences("Set", MODE_PRIVATE).getBoolean("theme",false);
+        return switchPref;
+
     }
 }

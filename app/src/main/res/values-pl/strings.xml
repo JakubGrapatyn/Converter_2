@@ -7,4 +7,10 @@
     <string name="statementTitle">Błąd</string>
     <string name="statementMessage">Niepoprawna wartość</string>
     <string name="editText_input">Wprowadź liczbę</string>
+    <string name="setting">Ustawienia</string>
+    <string name="info">Informacja</string>
+    <string name="exit">Zakończ</string>
+    <string name="Descriptio">Informacje o aplikacji</string>
+    <string name="textView_night">Ciemny temat</string>
+    <string name="textView_theme">Wyświetlenie ciemnego motywu</string>
 </resources>

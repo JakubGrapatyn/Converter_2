@@ -6,6 +6,13 @@
     <string name="statementTitle">Error</string>
     <string name="statementMessage">Incorect</string>
     <string name="editText_input">input value</string>
+    <string name="setting">Setting</string>
+    <string name="info">info</string>
+    <string name="exit">exit</string>
+    <string name="Descriptio">Information about app</string>
+    <string name="textView_info" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget metus accumsan, placerat libero pretium, cursus ligula. Nam vitae pretium ex. Duis sit amet rutrum nulla. Aenean euismod, neque eu ultricies maximus, tortor odio aliquam diam, in pretium purus libero id odio. Quisque sit amet dui in ante eleifend tristique. Praesent vitae tellus consectetur, mattis felis sollicitudin, feugiat sapien. Nam venenatis, sem in vehicula hendrerit, lorem magna luctus ligula, eu bibendum metus dolor a purus. Donec mi nulla, malesuada ac lectus ac, consectetur varius turpis. Sed commodo laoreet est nec sollicitudin. Aliquam pharetra lobortis vulputate. Aenean nulla tellus, aliquam eget nibh ut, semper sodales diam. Quisque a nulla purus. Morbi id mi convallis, pharetra nisl at, viverra neque.</string>
+    <string name="textView_night">Night theme</string>
+    <string name="textView_theme">Theme night mode</string>
 
     <string-array name="conversion" translatable="false">
         <item>dec > bin</item>
